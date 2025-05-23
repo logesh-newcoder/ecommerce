@@ -1,0 +1,19 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+#products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  width: 200px;
+}
+.card img {
+  width: 100%;
+  height: auto;
+}
