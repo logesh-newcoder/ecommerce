@@ -6,9 +6,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const DATA_FILE = './boys.json';
+const DATA_FILE = './mens.json';
 
-app.get('/api/boys', (req, res) => {
+app.get('/api/mens', (req, res) => {
   const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf-8'));
   res.json(data);
 });
