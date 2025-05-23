@@ -1,0 +1,16 @@
+[
+  {
+    "id": "b101",
+    "name": "Blue T-Shirt",
+    "type": "T-Shirt",
+    "price": 299,
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": "b102",
+    "name": "Black Pant",
+    "type": "Pant",
+    "price": 499,
+    "image": "https://via.placeholder.com/150"
+  }
+]
