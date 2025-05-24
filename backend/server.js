@@ -6,48 +6,49 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const DATA_FILE_1 = './mens/t-shirt/0-100.json';
-const DATA_FILE_2 = './mens/t-shirt/101-200.json';
+// File paths
+const TSHIRT_FILE = './data/mens-tshirt.json';
+const PANT_FILE = './data/mens-pant.json';
 
-// First JSON file
-app.get('/api/mens/0-100', (req, res) => {
+/** === MEN'S T-SHIRTS ROUTES === */
+app.get('/api/mens/tshirt', (req, res) => {
   try {
-    const data = JSON.parse(fs.readFileSync(DATA_FILE_1, 'utf-8'));
+    const data = JSON.parse(fs.readFileSync(TSHIRT_FILE, 'utf-8'));
     res.json(data);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to read data from 0-100 file' });
+    res.status(500).json({ error: 'Failed to read T-shirt data' });
   }
 });
 
-app.post('/api/mens/0-100', (req, res) => {
+app.post('/api/mens/tshirt', (req, res) => {
   try {
-    const products = JSON.parse(fs.readFileSync(DATA_FILE_1));
+    const products = JSON.parse(fs.readFileSync(TSHIRT_FILE));
     products.push(req.body);
-    fs.writeFileSync(DATA_FILE_1, JSON.stringify(products, null, 2));
-    res.status(201).json({ message: "Product added to 0-100" });
+    fs.writeFileSync(TSHIRT_FILE, JSON.stringify(products, null, 2));
+    res.status(201).json({ message: 'T-shirt added' });
   } catch (err) {
-    res.status(500).json({ error: 'Failed to write to 0-100 file' });
+    res.status(500).json({ error: 'Failed to write T-shirt data' });
   }
 });
 
-// Second JSON file
-app.get('/api/mens/101-200', (req, res) => {
+/** === MEN'S PANTS ROUTES === */
+app.get('/api/mens/pant', (req, res) => {
   try {
-    const data = JSON.parse(fs.readFileSync(DATA_FILE_2, 'utf-8'));
+    const data = JSON.parse(fs.readFileSync(PANT_FILE, 'utf-8'));
     res.json(data);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to read data from 101-200 file' });
+    res.status(500).json({ error: 'Failed to read Pant data' });
   }
 });
 
-app.post('/api/mens/101-200', (req, res) => {
+app.post('/api/mens/pant', (req, res) => {
   try {
-    const products = JSON.parse(fs.readFileSync(DATA_FILE_2));
+    const products = JSON.parse(fs.readFileSync(PANT_FILE));
     products.push(req.body);
-    fs.writeFileSync(DATA_FILE_2, JSON.stringify(products, null, 2));
-    res.status(201).json({ message: "Product added to 101-200" });
+    fs.writeFileSync(PANT_FILE, JSON.stringify(products, null, 2));
+    res.status(201).json({ message: 'Pant added' });
   } catch (err) {
-    res.status(500).json({ error: 'Failed to write to 101-200 file' });
+    res.status(500).json({ error: 'Failed to write Pant data' });
   }
 });
 
